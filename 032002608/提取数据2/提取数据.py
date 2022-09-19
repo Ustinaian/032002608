@@ -6,7 +6,7 @@ list_p = ["北京", "天津", "上海", "重庆", "内蒙古", "新疆", "西藏
           "山西", "甘肃", "陕西", "青海", "四川", "湖北", "安徽", "江苏", "浙江", "福建", "江西", "湖南", "贵州", "云南", "广东", "海南"]
 
 
-def save_data(ws, data1, data2, filename):
+def save_data0(wb, ws, data1, data2, filename):
     col1 = ['地区', '新增确诊', '新增无症状']
     for j in range(0, 3):
         ws.write(0, j, col1[j])
@@ -14,14 +14,27 @@ def save_data(ws, data1, data2, filename):
     ws.write(1, 0, '中国大陆')
     ws.write(1, 1, data1)
     ws.write(1, 2, data2)
-
-
-def save_data2(ws, wb, i, area, data, filename, flag):
-    ws.write(i, 0, area)
-    ws.write(i, flag, data)
     name = os.path.splitext(filename)[0]
     # 将excel表格保存起来
-    wb.save('D:/郭君濠/软件工程/第一次编程作业/提取数据/数据/' + name + '.xlsx')
+    wb.save('D:/郭君濠/软件工程/第一次编程作业/提取数据/本土新增数据/' + name + '.xlsx')
+
+
+# 存放新增确诊
+def save_data2(ws, wb, i, area, data, filename):
+    ws.write(i, 0, area)
+    ws.write(i, 1, data)
+    name = os.path.splitext(filename)[0]
+    # 将excel表格保存起来
+    wb.save('D:/郭君濠/软件工程/第一次编程作业/提取数据/新增确诊数据/' + name + '.xlsx')
+
+
+# 存放新增无症状
+def save_data3(ws, wb, i, area, data, filename):
+    ws.write(i, 0, area)
+    ws.write(i, 1, data)
+    name = os.path.splitext(filename)[0]
+    # 将excel表格保存起来
+    wb.save('D:/郭君濠/软件工程/第一次编程作业/提取数据/新增无症状数据/' + name + '.xlsx')
 
 
 def readfile(path, filename):
@@ -34,7 +47,7 @@ def readfile(path, filename):
         # 将数据存入excel
         workbook = xlwt.Workbook()
         worksheet = workbook.add_sheet('数据汇总', cell_overwrite_ok=True)
-        save_data(worksheet, data_ml1, data_ml2, filename)
+        save_data0(workbook, worksheet, data_ml1, data_ml2, filename)
 
         # 提取本土病例的一整段话
         try:
@@ -49,6 +62,8 @@ def readfile(path, filename):
         data_num = re.findall(r"\d+\.?\d*", str_data_p)
         data_num.pop(0)
 
+        workbook = xlwt.Workbook()
+        worksheet = workbook.add_sheet('数据汇总', cell_overwrite_ok=True)
         # 将新增确诊数据填入excel表格
         flag = 1
         count = 0
@@ -61,7 +76,7 @@ def readfile(path, filename):
                 # 将地区名称以及数据存入excel
                 if len(data_num) <= 0:
                     return
-                save_data2(worksheet, workbook, count+2, area, data_num[count], filename, 1)
+                save_data2(worksheet, workbook, count, area, data_num[count], filename)
                 if count >= len(data_num)-1:
                     break
                 count += 1
@@ -81,10 +96,11 @@ def readfile(path, filename):
         data_num2 = re.findall(r"\d+\.?\d*", str_data_p2)
         data_num2.pop(0)
 
+        workbook = xlwt.Workbook()
+        worksheet = workbook.add_sheet('数据汇总', cell_overwrite_ok=True)
         # 将新增无症状数据填入excel表格
         flag = 1
-        count = len(data_num) + 2
-        count2 = 0
+        count = 0
         for area in data_p_all2:
             if flag == 0:
                 flag = 1
@@ -94,11 +110,10 @@ def readfile(path, filename):
                 # 将地区名称以及数据存入excel
                 if len(data_num2) <= 0:
                     return
-                save_data2(worksheet, workbook, count, area, data_num2[count2], filename, 2)
-                if count2 >= len(data_num2) - 1:
+                save_data3(worksheet, workbook, count, area, data_num2[count], filename)
+                if count >= len(data_num2) - 1:
                     break
                 count += 1
-                count2 += 1
 
 
 if __name__ == "__main__":
