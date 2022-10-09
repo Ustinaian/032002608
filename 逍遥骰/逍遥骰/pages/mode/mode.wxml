@@ -1,0 +1,7 @@
+<!--pages/mode/mode.wxml-->
+<view>
+  <view class="view"></view>
+  <button class="btn-local" bindtap="btn_local" hover-class="local-hover-class">本地对战</button>
+  <button class="btn-ai" bindtap="btn_ai" hover-class="ai-hover-class">人机对战</button>
+  <button class="btn-online" bindtap="btn_online" hover-class="online-hover-class">在线对战</button>
+</view>

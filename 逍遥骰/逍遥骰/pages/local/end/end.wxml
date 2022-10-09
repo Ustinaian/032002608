@@ -1,0 +1,22 @@
+<!--pages/local/end/end.wxml-->
+<view>
+  <view style="position:absolute; text-align: center; font-size: 70rpx; left: 30%;top: 14%;">
+  <text>游戏结束</text>
+  </view>
+
+
+  <view style="position:absolute; text-align: center; font-size: 60rpx; left: 32%;top: 28%">A方:</view>
+
+  <view style="position:absolute; text-align: center; font-size: 60rpx; left: 57%;top: 28%">{{score2}}</view>
+
+  <view style="position:absolute; text-align: center; font-size: 60rpx; left: 32%;top: 38%">B方:</view>
+  <view style="position:absolute; text-align: center; font-size: 60rpx; left: 57%;top: 38%">{{score1}}</view>
+
+  <view wx:if="{{score2>score1}}"  style="position:absolute; text-align: center; font-size: 90rpx; left: 24%; top: 50%">A方获胜！</view>
+  <view wx:elif="{{score2<score1}}"  style="position:absolute; text-align: center; font-size: 90rpx; left: 26%; top: 50%">B方获胜！</view>
+  <view wx:else="{{score2==score1}}"  style="position:absolute; text-align: center; font-size: 90rpx; left: 36%; top: 50%">平局</view>
+
+  <view>
+    <button style="position: absolute; top: 70%; left: 24%; border-radius: 60rpx; background-color: pink;" bindtap="btn">返回主页</button>
+  </view>
+</view>

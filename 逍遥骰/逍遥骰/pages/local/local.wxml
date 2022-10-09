@@ -1,0 +1,81 @@
+<!--pages/local/local.wxml-->
+<view>
+  <view>
+    <view>
+      <view class="position" style="left: 253rpx; top: 220rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="1">{{num[1].number}}</view>
+      <view class="position" style="left: 340rpx; top: 220rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="2">{{num[2].number}}</view>
+      <view class="position" style="left: 426rpx; top: 220rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="3">{{num[3].number}}</view>
+      <view class="position" style="left: 253rpx; top: 305rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="4">{{num[4].number}}</view>
+      <view class="position" style="left: 340rpx; top: 305rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="5">{{num[5].number}}</view>
+      <view class="position" style="left: 426rpx; top: 305rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="6">{{num[6].number}}</view>
+      <view class="position" style="left: 253rpx; top: 390rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="7">{{num[7].number}}</view>
+      <view class="position" style="left: 340rpx; top: 390rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="8">{{num[8].number}}</view>
+      <view class="position" style="left: 426rpx; top: 390rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="9">{{num[9].number}}</view>
+    </view>
+
+
+
+    <view style="flex-direction: row;">
+      <view class="section_title1" style="text-align: center;">B方</view>
+    </view>
+    <!-- 九宫格1 -->
+    <view class="section__ctn1">
+      <image src="/image/九宫格.png" mode="aspectFit" class="image1"></image>
+    </view>
+  </view>
+
+
+  <!-- 分割线 -->
+  <view class="view_fengexian">
+    <view ></view>
+  </view>
+  <view>
+    <view>
+      <view class="position" style="left: 253rpx; top: 870rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="10">{{num[10].number}}</view>
+      <view class="position" style="left: 340rpx; top: 870rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="11">{{num[11].number}}</view>
+      <view class="position" style="left: 426rpx; top: 870rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="12">{{num[12].number}}</view>
+      <view class="position" style="left: 253rpx; top: 955rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="13">{{num[13].number}}</view>
+      <view class="position" style="left: 340rpx; top: 955rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="14">{{num[14].number}}</view>
+      <view class="position" style="left: 426rpx; top: 955rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="15">{{num[15].number}}</view>
+      <view class="position" style="left: 253rpx; top: 1040rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="16">{{num[16].number}}</view>
+      <view class="position" style="left: 340rpx; top: 1040rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="17">{{num[17].number}}</view>
+      <view class="position" style="left: 426rpx; top: 1040rpx;" hover-class="hover" hover-stay-time="0" bindtap="setdata" data-id="18">{{num[18].number}}</view>
+    </view>
+
+
+
+    <!-- 九宫格2 -->
+    <view class="section__ctn2">
+      <image src="/image/九宫格.png" mode="aspectFit" class="image2"></image>
+    </view>
+    <view class="section_title2" style="text-align: center;">A方</view>
+    
+  </view>
+
+  <!-- 骰子动图 -->
+  <view>
+    <view class="moving_dice_view">
+      <image src="{{mdice[0]}}" class="moving_dice" bindload="onLoad"></image>
+    </view>
+  </view>
+
+
+  <!-- 骰子1 -->
+  <view class="dice1_view" hover-class="hover_dice1" hover-stay-time="0" bindtap="setdice" wx:if="{{flg==1}}">
+    <image class="dice1" src="/image/骰子.png" mode="aspectFit"></image>
+  </view>
+
+  <!-- 骰子2 -->
+  <view class="dice2_view" hover-class="hover_dice2" hover-stay-time="0" bindtap="setdice" wx:elif="{{flg==0}}">
+    <image class="dice2" src="/image/骰子.png" mode="aspectFit"></image>
+  </view>
+
+  <view style="position: absolute; left: 20%; top:15%; font-size: 50rpx; font-weight: 600">K</view>
+  <view style="position: absolute; left: 20%; top:21%; font-size: 55rpx; font-weight: 600">E</view>
+  <view style="position: absolute; left: 20%; top:27%; font-size: 50rpx; font-weight: 600">X</view>
+
+
+  <view style="position: absolute; left: 20%; top:60%; font-size: 55rpx; font-weight: 600">K</view>
+  <view style="position: absolute; left: 20%; top:66%; font-size: 55rpx; font-weight: 600">E</view>
+  <view style="position: absolute; left: 20%; top:72%; font-size: 50rpx; font-weight: 600">X</view>
+</view>
